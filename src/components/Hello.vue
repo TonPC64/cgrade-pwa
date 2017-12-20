@@ -120,6 +120,12 @@ export default {
     },
     unit () {
       this.save()
+    },
+    grades: {
+      handler () {
+        this.save()
+      },
+      deep: true
     }
   },
   methods: {
@@ -129,13 +135,9 @@ export default {
         unit: 3,
         grade: 'A'
       })
-      this.save()
-      this.load()
     },
     remove (index) {
       this.grades.splice(index, 1)
-      this.save()
-      this.load()
     },
     save () {
       window.localStorage.setItem('total', JSON.stringify({point: this.point, unit: this.unit}))
@@ -148,13 +150,17 @@ export default {
       let jsonTerm = {}
       if (total) {
         jsonTotal = JSON.parse(total)
+        this.point = +jsonTotal.point
+        this.unit = +jsonTotal.unit
       }
       if (term) {
         jsonTerm = JSON.parse(term)
+        this.grades = jsonTerm
       }
-
-      console.log(jsonTerm, jsonTotal)
     }
+  },
+  created () {
+    this.load()
   }
 }
 </script>
