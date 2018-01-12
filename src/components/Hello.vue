@@ -27,9 +27,8 @@
         </b-field>
     </div>
     <div class="columns is-marginless is-mobile" v-if="grades.length !== 0">
-      <b-field 
-        label="เกรด" 
-        class="column is-full" >
+      <div class="field column is-full">
+        <label class="label">เกรด</label>
         <div 
         class="centered"
         :key="index"
@@ -55,7 +54,7 @@
             <b-icon  pack="fa" icon="trash" type="is-danger"></b-icon>
           </div>
         </div>
-      </b-field>
+      </div>
     </div>
     
     <div class="centered">
@@ -166,7 +165,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
   .main {
     box-sizing: border-box;
     padding: 15px;
